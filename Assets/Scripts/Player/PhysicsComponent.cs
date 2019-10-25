@@ -21,9 +21,12 @@ public class PhysicsComponent : MonoBehaviour
     GameObject[] blocks;
     List<Vector2> blocksVelocities = new List<Vector2>();
 
+    StateComponent stateComponent;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        stateComponent = GetComponent<StateComponent>();
     }
 
     public void ProcessPlayerInputs(float moving, Dictionary<string, bool> keys, bool facingRight)
@@ -38,7 +41,7 @@ public class PhysicsComponent : MonoBehaviour
         {
             MovePlayer(moving);
         }
-        if (inputs["Jump"])
+        if (inputs["Jump"] && stateComponent.isGrounded)
         {
             PlayerJump();
         }
