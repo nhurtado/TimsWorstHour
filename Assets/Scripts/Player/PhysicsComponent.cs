@@ -77,11 +77,11 @@ public class PhysicsComponent : MonoBehaviour
         grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
         if (facingRight)
         {
-            grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(1f, 0.35f);
+            grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(1.5f, 0.35f);
         }
         else
         {
-            grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(-1f, 0.35f);
+            grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(-1.5f, 0.35f);
         }
         grabbedObject.GetComponent<Rigidbody2D>().mass = 1;
         isGrabbingObject = true;
