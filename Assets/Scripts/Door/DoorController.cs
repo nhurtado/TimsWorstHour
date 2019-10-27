@@ -23,7 +23,6 @@ public class DoorController : MonoBehaviour
     }
 
     public void OpenDoor() {
-        print("Door: OpenDoor");
         if (locked) {
             if (stateComponent.GetKeys() > 0) {
                 SceneManager.LoadScene(leadsToScene);

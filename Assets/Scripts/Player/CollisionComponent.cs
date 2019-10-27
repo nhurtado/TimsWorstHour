@@ -45,8 +45,6 @@ public class CollisionComponent : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Door" && physicsComponent.CanExit()) {
             collision.GetComponent<DoorController>().OpenDoor();
-            print("Collision: OpenDoor");
-            print(stateComponent.GetKeys());
         }
     }
 }
