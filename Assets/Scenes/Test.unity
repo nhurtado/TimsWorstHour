@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 432144213}
   m_Layer: 0
   m_Name: Void
-  m_TagString: Untagged
+  m_TagString: void
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,7 +742,7 @@ CompositeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3742,11 +3742,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2043987783}
     m_Modifications:
-    - target: {fileID: 2356175291325152995, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2356175291325153005, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3801,6 +3796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356175291325152995, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1058c8c8c1f9ea64697de3a467d72a1c, type: 3}
@@ -4064,11 +4064,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037285069}
     m_Modifications:
-    - target: {fileID: 4950749259591078292, guid: 442b27fe0d7ca3142b543aa6c772aaa8,
-        type: 3}
-      propertyPath: m_Name
-      value: Key
-      objectReference: {fileID: 0}
     - target: {fileID: 4950749259591078299, guid: 442b27fe0d7ca3142b543aa6c772aaa8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4123,6 +4118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950749259591078292, guid: 442b27fe0d7ca3142b543aa6c772aaa8,
+        type: 3}
+      propertyPath: m_Name
+      value: Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442b27fe0d7ca3142b543aa6c772aaa8, type: 3}
