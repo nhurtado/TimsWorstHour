@@ -67,4 +67,8 @@ public class StateComponent : MonoBehaviour
     public void Die() {
         SceneManager.LoadScene(0);
     }
+
+    public int GetKeys() {
+        return keys;
+    }
 }

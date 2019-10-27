@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
         inputs.Add("F", false); //Put Object
         inputs.Add("T", false); //Stop Time
         inputs.Add("Jump", false);
+        inputs.Add("Up", false); //Enter door
         inputComponent = GetComponent<InputComponent>();
         graphicsComponent = GetComponent<GraphicsComponent>();
         physicsComponent = GetComponent<PhysicsComponent>();

@@ -9,7 +9,6 @@ public class PhysicsComponent : MonoBehaviour
     public float speed = 7;
     Dictionary<string, bool> inputs;
 
-    Rigidbody2D rb;
     bool facingRight = true;
 
     bool isGrabbingObject = false;
@@ -21,6 +20,7 @@ public class PhysicsComponent : MonoBehaviour
     GameObject[] blocks;
     List<Vector2> blocksVelocities = new List<Vector2>();
 
+    Rigidbody2D rb;
     StateComponent stateComponent;
 
     void Start()
@@ -143,5 +143,9 @@ public class PhysicsComponent : MonoBehaviour
     public bool CanGrab()
     {
         return inputs["E"] && !isGrabbingObject;
+    }
+
+    public bool CanExit() {
+        return inputs["Up"] || inputs["W"];
     }
 }
