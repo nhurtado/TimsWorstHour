@@ -7,6 +7,7 @@ TagManager:
   - GrabbableObject
   - Orb
   - Key
+  - void
   layers:
   - Default
   - TransparentFX

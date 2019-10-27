@@ -7,11 +7,15 @@ public class StateComponent : MonoBehaviour
 {
     public bool isGrounded = false;
     public int shields;
+
     int orbs;
     int keys;
+
     GameObject shieldCounter;
     GameObject orbCounter;
     GameObject keyCounter;
+
+    public Vector2 iniPosition;
 
     void Start()
     {
@@ -24,7 +28,7 @@ public class StateComponent : MonoBehaviour
     public void AddOrb()
     {
         orbs += 1;
-        if (orbs >= 3)
+        if (orbs >= 5)
         {
             orbs = 0;
             AddShield();
@@ -50,9 +54,8 @@ public class StateComponent : MonoBehaviour
         shieldCounter.GetComponent<Text>().text = "X " + shields;
     }
 
-    public void RemoveShield()
-    {
-        shields -= 1;
+    public void RecieveDamage(int damage) {
+        shields -= damage;
         shieldCounter.GetComponent<Text>().text = "X " + shields;
     }
 }

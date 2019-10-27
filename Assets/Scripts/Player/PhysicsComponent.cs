@@ -27,6 +27,7 @@ public class PhysicsComponent : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         stateComponent = GetComponent<StateComponent>();
+        stateComponent.iniPosition = rb.position;
     }
 
     public void ProcessPlayerInputs(float moving, Dictionary<string, bool> keys, bool facingRight)
