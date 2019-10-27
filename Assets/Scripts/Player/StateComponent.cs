@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StateComponent : MonoBehaviour
 {
@@ -55,7 +56,15 @@ public class StateComponent : MonoBehaviour
     }
 
     public void RecieveDamage(int damage) {
-        shields -= damage;
-        shieldCounter.GetComponent<Text>().text = "X " + shields;
+        if (shields < damage) {
+            Die();
+        }
+        else {
+            shields -= damage;
+            shieldCounter.GetComponent<Text>().text = "X " + shields;
+        }
+    }
+    public void Die() {
+        SceneManager.LoadScene(0);
     }
 }
