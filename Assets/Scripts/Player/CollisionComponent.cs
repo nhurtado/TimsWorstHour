@@ -8,6 +8,7 @@ public class CollisionComponent : MonoBehaviour
     PhysicsComponent physicsComponent;
     StateComponent stateComponent;
     Rigidbody2D rb;
+    bool hasBeenDamagedRecently = false;
 
     void Start()
     {
@@ -36,15 +37,27 @@ public class CollisionComponent : MonoBehaviour
             Destroy(collision.gameObject);
             stateComponent.AddKey();
         }
-        if (collision.tag == "void") {
-            rb.velocity = new Vector2(0f, 0f);
-            rb.position = stateComponent.iniPosition;
-            stateComponent.RecieveDamage(1);
-        }
     }
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Door" && physicsComponent.CanExit()) {
             collision.GetComponent<DoorController>().OpenDoor();
         }
+        if (collision.tag == "void")
+        {
+            if (!hasBeenDamagedRecently)
+            {
+                hasBeenDamagedRecently = true;
+                rb.velocity = new Vector2(0f, 0f);
+                rb.position = stateComponent.iniPosition;
+                stateComponent.RecieveDamage(1);
+                StartCoroutine("ResetHasBeenDamagedRecently");
+            }
+        }
+    }
+    
+    IEnumerator ResetHasBeenDamagedRecently()
+    {
+        yield return new WaitForSeconds(0.2f);
+        hasBeenDamagedRecently = false;
     }
 }
