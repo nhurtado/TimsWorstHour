@@ -17,6 +17,10 @@ public class PhysicsComponent : MonoBehaviour
     bool isTimeStopped = false;
     float lastTimeStop = float.MaxValue;
 
+    public GameObject iceBallPrefab;
+    public Transform iceBallSpawner;
+    GameObject newIceBall;
+
     GameObject[] blocks;
     List<Vector2> blocksVelocities = new List<Vector2>();
 
@@ -57,6 +61,10 @@ public class PhysicsComponent : MonoBehaviour
         if (inputs["T"])
         {
             StopTime();
+        }
+        if (inputs["Z"])
+        {
+            IceBall();
         }
     }
 
@@ -138,7 +146,14 @@ public class PhysicsComponent : MonoBehaviour
         }
         blocksVelocities.Clear();
         isTimeStopped = false;
+    }void IceBall()
+    {
+        newIceBall = Instantiate(iceBallPrefab,iceBallSpawner.position,iceBallSpawner.rotation);
+        newIceBall.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
+        newIceBall.transform.rotation = transform.rotation;
     }
+
+
 
     public bool CanGrab()
     {
