@@ -14,6 +14,10 @@ public class PhysicsComponent : MonoBehaviour
     bool isGrabbingObject = false;
     GameObject grabbedObject;
 
+    public GameObject iceBallPrefab;
+    public Transform iceBallSpawner;
+    GameObject newIceBall;
+
     Rigidbody2D rb;
     StateComponent stateComponent;
 
@@ -47,6 +51,10 @@ public class PhysicsComponent : MonoBehaviour
         if (inputs["T"])
         {
             StopTime();
+        }
+        if (inputs["Z"])
+        {
+            IceBall();
         }
     }
 
@@ -105,6 +113,15 @@ public class PhysicsComponent : MonoBehaviour
     {
         FreezeWorldComponent.instance.FreezeTime();
     }
+
+    void IceBall()
+    {
+        newIceBall = Instantiate(iceBallPrefab,iceBallSpawner.position,iceBallSpawner.rotation);
+        newIceBall.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
+        newIceBall.transform.rotation = transform.rotation;
+    }
+
+
 
     public bool CanGrab()
     {

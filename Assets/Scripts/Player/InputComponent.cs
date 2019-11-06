@@ -15,6 +15,7 @@ public class InputComponent : MonoBehaviour
         keys["Jump"] = Input.GetKey(KeyCode.Space);
         keys["Up"] = Input.GetKey(KeyCode.UpArrow);
         keys["W"] = Input.GetKey(KeyCode.W);
+        keys["Z"] = Input.GetKey(KeyCode.Z);
         return Tuple.Create(moving,keys);
     }
 }
