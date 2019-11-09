@@ -10,6 +10,8 @@ TagManager:
   - void
   - Door
   - Enemy
+  - Upper
+  - Downer
   layers:
   - Default
   - TransparentFX

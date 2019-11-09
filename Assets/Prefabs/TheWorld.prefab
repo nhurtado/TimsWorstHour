@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2051659570447750758}
-  - component: {fileID: 2051659570447750759}
+  - component: {fileID: 6258650855644688177}
   m_Layer: 0
   m_Name: TheWorld
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2051659570447750759
+--- !u!114 &6258650855644688177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeFreezeLimit: 3
-  timeFreezeCooldown: 0.3
+  timeFreezeCooldown: 2

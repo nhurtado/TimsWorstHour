@@ -54,6 +54,16 @@ public class CollisionComponent : MonoBehaviour
             Destroy(collision.gameObject);
             stateComponent.AddOrb();
         }
+        if (collision.gameObject.tag == "Upper")
+        {
+            Destroy(collision.gameObject);
+            FreezeWorldComponent.instance.UpgradeFreeze();
+        }
+        if (collision.gameObject.tag == "Downer")
+        {
+            Destroy(collision.gameObject);
+            FreezeWorldComponent.instance.UpgradeCooldown();
+        }
         if (collision.gameObject.tag == "Key")
         {
             Destroy(collision.gameObject);
