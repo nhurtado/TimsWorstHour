@@ -25,6 +25,28 @@ public class CollisionComponent : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (!hasBeenDamagedRecently)
+            {
+                hasBeenDamagedRecently = true;
+                Physics2D.IgnoreLayerCollision(8, 9, true);
+                if (collision.gameObject.transform.position.x <= transform.position.x)
+                {
+                    physicsComponent.JumpByDamage(true);
+                }
+                else
+                {
+                    physicsComponent.JumpByDamage(false);
+                }
+                stateComponent.RecieveDamage(1);
+                StartCoroutine("ResetHasBeingDamagedByEnemy");
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Orb")
@@ -38,6 +60,7 @@ public class CollisionComponent : MonoBehaviour
             stateComponent.AddKey();
         }
     }
+
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Door" && physicsComponent.CanExit()) {
             collision.GetComponent<DoorController>().OpenDoor();
@@ -47,17 +70,26 @@ public class CollisionComponent : MonoBehaviour
             if (!hasBeenDamagedRecently)
             {
                 hasBeenDamagedRecently = true;
-                rb.velocity = new Vector2(0f, 0f);
-                rb.position = stateComponent.iniPosition;
                 stateComponent.RecieveDamage(1);
-                StartCoroutine("ResetHasBeenDamagedRecently");
+                StartCoroutine("ResetHasFallenToVoid");
             }
+            rb.velocity = new Vector2(0f, 0f);
+            rb.position = stateComponent.iniPosition;
         }
     }
     
-    IEnumerator ResetHasBeenDamagedRecently()
+    IEnumerator ResetHasFallenToVoid()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         hasBeenDamagedRecently = false;
     }
+
+    IEnumerator ResetHasBeingDamagedByEnemy()
+    {
+        yield return new WaitForSeconds(2f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        hasBeenDamagedRecently = false;
+    }
+
+
 }

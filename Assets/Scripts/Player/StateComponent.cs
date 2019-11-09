@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class StateComponent : MonoBehaviour
 {
     public bool isGrounded = false;
-    public int shields;
+    public int shields = 0;
 
     int orbs;
     int keys;
@@ -20,7 +20,6 @@ public class StateComponent : MonoBehaviour
 
     void Start()
     {
-        shields = 0;
         shieldCounter = GameObject.Find("ShieldCounter");
         orbCounter = GameObject.Find("OrbCounter");
         keyCounter = GameObject.Find("KeyCounter");

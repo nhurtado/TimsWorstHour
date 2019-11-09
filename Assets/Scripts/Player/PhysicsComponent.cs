@@ -114,14 +114,25 @@ public class PhysicsComponent : MonoBehaviour
         FreezeWorldComponent.instance.FreezeTime();
     }
 
+    public void JumpByDamage(bool jumpRight)
+    {
+        if (jumpRight)
+        {
+            rb.velocity = new Vector2(3,6);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-3,6);
+        }
+        
+    }
+
     void IceBall()
     {
         newIceBall = Instantiate(iceBallPrefab,iceBallSpawner.position,iceBallSpawner.rotation);
         newIceBall.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
         newIceBall.transform.rotation = transform.rotation;
     }
-
-
 
     public bool CanGrab()
     {
