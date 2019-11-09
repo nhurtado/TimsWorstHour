@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7876971605005574810}
   - component: {fileID: 7876971605005574809}
   - component: {fileID: 7876971605005574808}
+  - component: {fileID: 957511017}
   m_Layer: 9
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -181,3 +182,15 @@ MonoBehaviour:
   leftLimit: 2
   flyingVertical: 0
   goingUp: 0
+--- !u!114 &957511017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876971605005574791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c599c7236262d2745a5abcdc0456a322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
