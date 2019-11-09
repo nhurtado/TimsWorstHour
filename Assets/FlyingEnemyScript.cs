@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlyingEnemyScript : MonoBehaviour
 {
+    public int healthPoints = 3;
     public float speed = 2.5f;
     public float rightLimit = 5f;
     public float leftLimit = 5f;
