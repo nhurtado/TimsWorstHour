@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceBallMovement : MonoBehaviour
+public class RisingIceBallMovements : MonoBehaviour
 {
     private Rigidbody2D iceBallRB;
 
@@ -14,7 +14,7 @@ public class IceBallMovement : MonoBehaviour
 
     private Transform playerTrans;
 
-    private GameObject player;
+    public GameObject player;
     private void Awake()
     {
         iceBallRB = GetComponent<Rigidbody2D>();
@@ -23,14 +23,8 @@ public class IceBallMovement : MonoBehaviour
     }
     void Start()
     {
-        if(playerTrans.localRotation == Quaternion.Euler(0, 0, 0))
         {
-            iceBallRB.velocity = new Vector2(iceBallSpeed, iceBallRB.velocity.y);
-        }
-        
-        else
-        {
-            iceBallRB.velocity = new Vector2(-iceBallSpeed, iceBallRB.velocity.y);
+            iceBallRB.velocity = new Vector2(iceBallRB.velocity.y, iceBallSpeed);
         }
     }
 
@@ -53,7 +47,7 @@ public class IceBallMovement : MonoBehaviour
             }
             else if (!facingRight && moving > 0)
             {
-                iceBallRB.velocity = new Vector2(iceBallSpeed*-1, iceBallRB.velocity.y);
+                iceBallRB.velocity = new Vector2(iceBallSpeed * -1, iceBallRB.velocity.y);
                 facingRight = !facingRight;
             }
         }
@@ -62,6 +56,7 @@ public class IceBallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(newiceBall,iceBallLife);
+        Destroy(newiceBall, iceBallLife);
     }
 }
+

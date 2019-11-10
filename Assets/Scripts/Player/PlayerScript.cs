@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    
     bool facingRight = true;
     float moving;
     Dictionary<string, bool> inputs;
