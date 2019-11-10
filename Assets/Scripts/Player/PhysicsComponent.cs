@@ -14,6 +14,7 @@ public class PhysicsComponent : MonoBehaviour
     bool isGrabbingObject = false;
     GameObject grabbedObject;
 
+    private GameObject iceballcheck;
     public GameObject iceBallPrefab;
     public Transform iceBallSpawner;
     GameObject newIceBall;
@@ -129,9 +130,11 @@ public class PhysicsComponent : MonoBehaviour
 
     void IceBall()
     {
-        newIceBall = Instantiate(iceBallPrefab,iceBallSpawner.position,iceBallSpawner.rotation);
-        newIceBall.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
-        newIceBall.transform.rotation = transform.rotation;
+        iceballcheck = GameObject.FindGameObjectWithTag("IceBall");
+        if (iceballcheck == null)
+        {
+            newIceBall = Instantiate(iceBallPrefab, iceBallSpawner.position, iceBallSpawner.rotation);
+        }  
     }
 
     public bool CanGrab()
