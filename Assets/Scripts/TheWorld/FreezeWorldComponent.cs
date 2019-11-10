@@ -46,4 +46,10 @@ public class FreezeWorldComponent : MonoBehaviour
     {
         timeFreezeCooldown -= timeFreezeCooldownUpgrade;
     }
+
+    public void ResetWorld()
+    {
+        FreezeEvent = null;
+        UnfreezeEvent = null;
+    }
 }

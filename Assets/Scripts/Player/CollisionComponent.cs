@@ -10,6 +10,7 @@ public class CollisionComponent : MonoBehaviour
     Rigidbody2D rb;
     bool hasBeenDamagedRecently = false;
 
+
     void Start()
     {
         physicsComponent = GetComponent<PhysicsComponent>();
@@ -27,12 +28,13 @@ public class CollisionComponent : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Hazard")
         {
             if (!hasBeenDamagedRecently)
             {
                 hasBeenDamagedRecently = true;
                 Physics2D.IgnoreLayerCollision(8, 9, true);
+                stateComponent.RecieveDamage(1);
                 if (collision.gameObject.transform.position.x <= transform.position.x)
                 {
                     physicsComponent.JumpByDamage(true);
@@ -41,8 +43,7 @@ public class CollisionComponent : MonoBehaviour
                 {
                     physicsComponent.JumpByDamage(false);
                 }
-                stateComponent.RecieveDamage(1);
-                StartCoroutine("ResetHasBeingDamagedByEnemy");
+                StartCoroutine("ResetHasBeingDamaged");
             }
         }
     }
@@ -94,9 +95,9 @@ public class CollisionComponent : MonoBehaviour
         hasBeenDamagedRecently = false;
     }
 
-    IEnumerator ResetHasBeingDamagedByEnemy()
+    IEnumerator ResetHasBeingDamaged()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
         hasBeenDamagedRecently = false;
     }

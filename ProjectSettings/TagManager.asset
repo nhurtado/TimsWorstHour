@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Upper
   - Downer
+  - Hazard
   layers:
   - Default
   - TransparentFX

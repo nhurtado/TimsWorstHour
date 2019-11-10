@@ -64,7 +64,9 @@ public class StateComponent : MonoBehaviour
         }
     }
     public void Die() {
-        SceneManager.LoadScene(0);
+        FreezeWorldComponent.instance.ResetWorld();
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     public int GetKeys() {
