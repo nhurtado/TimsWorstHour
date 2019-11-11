@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051659570447750758}
   - component: {fileID: 6258650855644688177}
+  - component: {fileID: 1539861110}
   m_Layer: 0
   m_Name: TheWorld
   m_TagString: Untagged
@@ -45,3 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeFreezeLimit: 3
   timeFreezeCooldown: 2
+  timeFreezeLimitUpgrade: 0.5
+  timeFreezeCooldownUpgrade: 0.2
+--- !u!114 &1539861110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051659570447750752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20de420bc3464bb4bb346f2f5dc12d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eraChangeCooldown: 0.35

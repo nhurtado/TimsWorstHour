@@ -59,6 +59,10 @@ public class PhysicsComponent : MonoBehaviour
         {
             IceBall();
         }
+        if (inputs["C"])
+        {
+            ChangeEra();
+        }
     }
 
     void MovePlayer(float moving)
@@ -115,6 +119,11 @@ public class PhysicsComponent : MonoBehaviour
     void StopTime()
     {
         FreezeWorldComponent.instance.FreezeTime();
+    }
+
+    void ChangeEra()
+    {
+        EraChangeWorldComponent.instance.TriggerEraChange();
     }
 
     public void JumpByDamage(bool jumpRight)

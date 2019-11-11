@@ -23,6 +23,8 @@ public class PlayerScript : MonoBehaviour
         inputs.Add("T", false); //Stop Time
         inputs.Add("Jump", false);
         inputs.Add("Up", false); //Enter door
+        inputs.Add("Z", false); //Throw snowball
+        inputs.Add("C", false); //Era change
         inputComponent = GetComponent<InputComponent>();
         graphicsComponent = GetComponent<GraphicsComponent>();
         physicsComponent = GetComponent<PhysicsComponent>();
