@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5028993129077635969}
   - component: {fileID: 1590739762912333773}
   - component: {fileID: 1643000001401675355}
-  - component: {fileID: -2878225032859746795}
+  - component: {fileID: 2518796942988267145}
   m_Layer: 0
   m_Name: IceBall
   m_TagString: IceBall
@@ -137,7 +137,7 @@ CircleCollider2D:
   m_Offset: {x: -0.00709918, y: 0}
   serializedVersion: 2
   m_Radius: 0.9605742
---- !u!114 &-2878225032859746795
+--- !u!114 &2518796942988267145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2395588984315101358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c599c7236262d2745a5abcdc0456a322, type: 3}
+  m_Script: {fileID: 11500000, guid: 4420fc86225c9434a8851c4371c291c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GiveXBack: 1

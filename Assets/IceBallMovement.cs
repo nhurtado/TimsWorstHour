@@ -15,11 +15,14 @@ public class IceBallMovement : MonoBehaviour
     private Transform playerTrans;
 
     private GameObject player;
+    IceBallFreezeComponent iceBallFreezeComponent;
+
     private void Awake()
     {
         iceBallRB = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTrans = player.transform;
+        iceBallFreezeComponent = GetComponent<IceBallFreezeComponent>();
     }
     void Start()
     {
@@ -36,10 +39,8 @@ public class IceBallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.enabled)
-        {
-            Destroy(newiceBall);
-        }
+        iceBallFreezeComponent.Unsubscribe();
+        Destroy(newiceBall);
     }
 
     public bool UpdateIceaBall(bool facingRight, float moving)
@@ -58,10 +59,5 @@ public class IceBallMovement : MonoBehaviour
             }
         }
         return facingRight;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Destroy(newiceBall,iceBallLife);
     }
 }

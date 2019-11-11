@@ -20,12 +20,15 @@ public class PhysicsComponent : MonoBehaviour
 
     Rigidbody2D rb;
     StateComponent stateComponent;
+    FreezeWorldComponent worldComponent;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stateComponent = GetComponent<StateComponent>();
         stateComponent.iniPosition = rb.position;
+        GameObject go = GameObject.Find("TheWorld");
+        worldComponent = go.GetComponent<FreezeWorldComponent>();
     }
 
     public void ProcessPlayerInputs(float moving, Dictionary<string, bool> keys, bool facingRight)
