@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     public bool locked;
     public int channel;
     [Range(1,2)]
-    public int id;
+    public int id = 1;
 
     GameObject player;
     GameObject otherDoor;
@@ -40,11 +40,13 @@ public class DoorController : MonoBehaviour
         if (locked) {
             if (stateComponent.GetKeys() > 0) {
                 player.transform.position = otherDoor.transform.position + new Vector3(0,1);
+                stateComponent.iniPosition = player.transform.position;
                 stateComponent.RemoveKey();
             }
         }
         else {
             player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
+            stateComponent.iniPosition = player.transform.position;
         }
     }
 }
