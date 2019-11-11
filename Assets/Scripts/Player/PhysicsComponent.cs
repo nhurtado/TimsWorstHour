@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PhysicsComponent : MonoBehaviour
 {
-    
     public float jumpPower = 4;
     public float speed = 7;
     Dictionary<string, bool> inputs;
