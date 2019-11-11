@@ -39,8 +39,7 @@ public class DoorController : MonoBehaviour
     public void OpenDoor() {
         if (locked) {
             if (stateComponent.GetKeys() > 0) {
-                player.transform.position = otherDoor.transform.position + new Vector3(0,1);
-                stateComponent.iniPosition = player.transform.position;
+                locked = !locked;
                 stateComponent.RemoveKey();
             }
         }
