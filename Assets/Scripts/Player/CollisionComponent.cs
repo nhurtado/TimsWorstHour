@@ -70,6 +70,10 @@ public class CollisionComponent : MonoBehaviour
             Destroy(collision.gameObject);
             stateComponent.AddKey();
         }
+
+        if (collision.gameObject.tag == "DialogueTrigger") {
+            collision.GetComponent<DialogueTrigger>().TriggerDialogue();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
