@@ -15,7 +15,6 @@ public class DoorController : MonoBehaviour
     GameObject otherDoor;
     StateComponent stateComponent;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
@@ -28,12 +27,6 @@ public class DoorController : MonoBehaviour
                 break;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OpenDoor() {

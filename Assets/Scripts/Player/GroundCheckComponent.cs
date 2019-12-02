@@ -15,6 +15,11 @@ public class GroundCheckComponent : MonoBehaviour
         stateComponent.isGrounded = true;
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        stateComponent.isGrounded = true;
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         stateComponent.isGrounded = false;

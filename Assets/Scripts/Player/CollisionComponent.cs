@@ -18,14 +18,6 @@ public class CollisionComponent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "GrabbableObject" && physicsComponent.CanGrab())
-        {
-            physicsComponent.GrabObject(collision);
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Hazard")
