@@ -9,6 +9,7 @@ public class CollisionComponent : MonoBehaviour
     StateComponent stateComponent;
     Rigidbody2D rb;
     bool hasBeenDamagedRecently = false;
+    bool hasTriggeredRecently = false;
 
 
     void Start()
@@ -42,34 +43,43 @@ public class CollisionComponent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Orb")
+        if (!hasTriggeredRecently)
         {
-            Destroy(collision.gameObject);
-            stateComponent.AddOrb();
-        }
-        if (collision.gameObject.tag == "Upper")
-        {
-            Destroy(collision.gameObject);
-            FreezeWorldComponent.instance.UpgradeFreeze();
-        }
-        if (collision.gameObject.tag == "Downer")
-        {
-            Destroy(collision.gameObject);
-            FreezeWorldComponent.instance.UpgradeCooldown();
-        }
-        if (collision.gameObject.tag == "Key")
-        {
-            Destroy(collision.gameObject);
-            stateComponent.AddKey();
-        }
-
-        if (collision.gameObject.tag == "DialogueTrigger") {
-            collision.GetComponent<DialogueTrigger>().TriggerDialogue();
+            hasTriggeredRecently = true;
+            if (collision.gameObject.tag == "Orb")
+            {
+                Destroy(collision.gameObject);
+                stateComponent.AddOrb();
+            }
+            if (collision.gameObject.tag == "Upper")
+            {
+                Destroy(collision.gameObject);
+                FreezeWorldComponent.instance.UpgradeFreeze();
+            }
+            if (collision.gameObject.tag == "Downer")
+            {
+                Destroy(collision.gameObject);
+                FreezeWorldComponent.instance.UpgradeCooldown();
+            }
+            if (collision.gameObject.tag == "Key")
+            {
+                Destroy(collision.gameObject);
+                stateComponent.AddKey();
+            }
+            if (collision.gameObject.tag == "DialogueTrigger")
+            {
+                collision.GetComponent<DialogueTrigger>().TriggerDialogue();
+            }
+            StartCoroutine("ResetHasTriggered");
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Door" && physicsComponent.CanExit()) {
+            if (physicsComponent.isGrabbingObject)
+            {
+                physicsComponent.ReleaseObject(false);
+            }
             collision.GetComponent<DoorController>().OpenDoor();
         }
         if (collision.tag == "void")
@@ -80,11 +90,21 @@ public class CollisionComponent : MonoBehaviour
                 stateComponent.RecieveDamage(1);
                 StartCoroutine("ResetHasFallenToVoid");
             }
+            if (physicsComponent.isGrabbingObject)
+            {
+                physicsComponent.ReleaseObject(false);
+            }
             rb.velocity = new Vector2(0f, 0f);
             rb.position = stateComponent.iniPosition;
         }
     }
-    
+
+    IEnumerator ResetHasTriggered()
+    {
+        yield return new WaitForSeconds(0.02f);
+        hasTriggeredRecently = false;
+    }
+
     IEnumerator ResetHasFallenToVoid()
     {
         yield return new WaitForSeconds(0.5f);

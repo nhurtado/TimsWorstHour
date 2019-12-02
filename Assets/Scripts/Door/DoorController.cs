@@ -32,8 +32,8 @@ public class DoorController : MonoBehaviour
     public void OpenDoor() {
         if (locked) {
             if (stateComponent.GetKeys() > 0) {
-                locked = !locked;
                 stateComponent.RemoveKey();
+                locked = !locked;
             }
         }
         else {

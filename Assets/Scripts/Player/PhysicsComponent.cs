@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PhysicsComponent : MonoBehaviour
 {
-    public float jumpPower = 4;
+    public float jumpPower = 1;
     public float speed = 7;
     Dictionary<string, bool> inputs;
+
+    public float jumpTime = 1;
+    float jumpTimeCounter;
+    bool isJumping = false;
 
     bool facingRight = true;
     bool facingWall = false;
 
-    bool isGrabbingObject = false;
+    public bool isGrabbingObject = false;
     GameObject grabbedObject;
 
     private GameObject iceballcheck;
@@ -49,6 +53,7 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("DialogueTrigger");
         nonObstacles.Add("GrabbableObject");
         nonObstacles.Add("Player");
+        jumpTimeCounter = jumpTime;
     }
 
     void FixedUpdate()
@@ -84,9 +89,30 @@ public class PhysicsComponent : MonoBehaviour
         {
             MovePlayer(moving);
         }
-        if (inputs["Jump"] && stateComponent.isGrounded)
+        if (inputs["Jump"])
         {
-            PlayerJump();
+            if (stateComponent.isGrounded)
+            {
+                isJumping = true;
+                jumpTimeCounter = jumpTime;
+                PlayerJump();
+            }
+            else if (isJumping)
+            {
+                if (jumpTimeCounter > 0)
+                {
+                    PlayerJump();
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+        }
+        else if (isJumping)
+        {
+            isJumping = false;
         }
         if (inputs["E"])
         {
@@ -120,11 +146,11 @@ public class PhysicsComponent : MonoBehaviour
         {
             if (facingRight && moving > 0 )
             {
-                moving = -0.025f;
+                moving = -0.05f;
             }
             else if (!facingRight && moving < 0)
             {
-                moving = 0.025f;
+                moving = 0.05f;
             }
         }
         rb.velocity = new Vector2(moving * speed, rb.velocity.y);
@@ -147,21 +173,14 @@ public class PhysicsComponent : MonoBehaviour
                 grabbedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 grabbedObject.transform.parent = this.transform;
                 grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
-                if (facingRight)
-                {
-                    grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(1.65f, 0.35f);
-                }
-                else
-                {
-                    grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(-1.65f, 0.35f);
-                }
+                grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(0, 2.25f);
                 grabbedObject.GetComponent<Rigidbody2D>().mass = 1;
                 isGrabbingObject = true;
             }
         }
     }
 
-    void ReleaseObject(bool throwObject = true)
+    public void ReleaseObject(bool throwObject = true)
     {
         if (isGrabbingObject)
         {
@@ -176,6 +195,21 @@ public class PhysicsComponent : MonoBehaviour
                 else
                 {
                     grabbedObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-5, 4), ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                if (facingWall)
+                {
+                    grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position;
+                }
+                else if (facingRight)
+                {
+                    grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(1.65f, 0.35f);
+                }
+                else
+                {
+                    grabbedObject.GetComponent<Rigidbody2D>().transform.position = (Vector2)transform.position + new Vector2(-1.65f, 0.35f);
                 }
             }
             grabbedObject.GetComponent<Rigidbody2D>().mass = 10;
