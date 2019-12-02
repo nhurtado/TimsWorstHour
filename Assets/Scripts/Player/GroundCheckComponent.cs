@@ -13,6 +13,10 @@ public class GroundCheckComponent : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         stateComponent.isGrounded = true;
+        if (collision.gameObject.transform.tag == "Platform")
+        {
+            transform.parent.parent = collision.gameObject.transform;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -23,5 +27,9 @@ public class GroundCheckComponent : MonoBehaviour
     void OnCollisionExit2D(Collision2D collision)
     {
         stateComponent.isGrounded = false;
+        if (collision.gameObject.transform.tag == "Platform")
+        {
+            transform.parent.parent = null;
+        }
     }
 }

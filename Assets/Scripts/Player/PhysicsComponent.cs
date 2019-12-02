@@ -28,6 +28,9 @@ public class PhysicsComponent : MonoBehaviour
 
     float lastDoorUseTime = 0;
 
+    RaycastHit2D hit;
+    List<string> nonObstacles = new List<string>();
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,20 +38,36 @@ public class PhysicsComponent : MonoBehaviour
         stateComponent.iniPosition = rb.position;
         GameObject theWorld = GameObject.Find("TheWorld");
         worldComponent = theWorld.GetComponent<FreezeWorldComponent>();
+        nonObstacles.Add("Orb");
+        nonObstacles.Add("Key");
+        nonObstacles.Add("Door");
+        nonObstacles.Add("Enemy");
+        nonObstacles.Add("Upper");
+        nonObstacles.Add("Downer");
+        nonObstacles.Add("Hazard");
+        nonObstacles.Add("Platform");
+        nonObstacles.Add("DialogueTrigger");
+        nonObstacles.Add("GrabbableObject");
+        nonObstacles.Add("Player");
     }
 
-    void Update()
+    void FixedUpdate()
+    {
+        CheckForObstacle();
+    }
+
+    void CheckForObstacle()
     {
         Vector3 right = wallDetectionPoint.TransformDirection(Vector2.right) * 0.1f;
         Vector3 up = wallDetectionPoint.TransformDirection(Vector2.up) * 0.1f;
         facingWall = false;
         for (int i = 0; i < 20; i++)
         {
-            Debug.DrawRay(wallDetectionPoint.position + up * i, right, Color.green);
-            RaycastHit2D hit = Physics2D.Raycast(wallDetectionPoint.position + up * i, right, 0.05f);
+            //Debug.DrawRay(wallDetectionPoint.position + up * i, right, Color.green);
+            hit = Physics2D.Raycast(wallDetectionPoint.position + up * i, right, 0.05f);
             if (hit)
             {
-                if (hit.transform.tag != "Enemy" && hit.transform.tag != "DialogueTrigger" && hit.transform.tag != "Door" && hit.transform.tag != "GrabbableObject")
+                if (!nonObstacles.Contains(hit.transform.tag))
                 {
                     facingWall = true;
                     break;
