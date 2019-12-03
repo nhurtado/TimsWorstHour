@@ -14,6 +14,7 @@ public class FreezeWorldComponent : MonoBehaviour
     public float timeFreezeCooldownUpgrade = 0.2f;
     float lastTimeFreeze = float.MinValue;
     float currentTime;
+    public AudioSource levelMusic;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class FreezeWorldComponent : MonoBehaviour
         {
             lastTimeFreeze = currentTime;
             FreezeEvent.Invoke();
+            levelMusic.pitch = 0.2f;
             StartCoroutine("UnfreezeTime");
         }
     }
@@ -35,6 +37,7 @@ public class FreezeWorldComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(timeFreezeLimit);
         UnfreezeEvent.Invoke();
+        levelMusic.pitch = 1f;
     }
 
     public void UpgradeFreeze()
