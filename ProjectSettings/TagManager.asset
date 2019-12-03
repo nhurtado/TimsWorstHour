@@ -17,6 +17,7 @@ TagManager:
   - DialogueTrigger
   - Platform
   - GroundCheck
+  - Button
   layers:
   - Default
   - TransparentFX

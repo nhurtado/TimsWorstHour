@@ -53,6 +53,7 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("DialogueTrigger");
         nonObstacles.Add("GrabbableObject");
         nonObstacles.Add("Player");
+        nonObstacles.Add("Button");
         jumpTimeCounter = jumpTime;
     }
 

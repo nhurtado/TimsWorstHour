@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameObject colGameObject;
+    public Transform target;
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        colGameObject = collision.gameObject;
+        if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
+        {
+            target.gameObject.SetActive(false);
+        }
     }
 }
