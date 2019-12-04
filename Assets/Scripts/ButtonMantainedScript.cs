@@ -6,7 +6,7 @@ public class ButtonMantainedScript : MonoBehaviour
 {
     GameObject colGameObject;
     public Transform target;
-
+    float recentlyActivated;
 
 
     void OnTriggerStay2D(Collider2D collision)
@@ -14,21 +14,16 @@ public class ButtonMantainedScript : MonoBehaviour
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            if (target.gameObject.activeSelf)
-            {
-                target.gameObject.SetActive(false);
-            }
+            target.gameObject.SetActive(false);
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
             target.gameObject.SetActive(true);
         }
     }
-
-
-
 }
