@@ -17,11 +17,12 @@ public class PhysicsComponent : MonoBehaviour
 
     public bool isGrabbingObject = false;
     GameObject grabbedObject;
-
-    private GameObject iceballcheck;
+    
     public GameObject iceBallPrefab;
-    public Transform iceBallSpawner;
-    GameObject newIceBall;
+    public Transform iceBallSpawnerRight;
+    public Transform iceBallSpawnerUp;
+    public float iceBallLifeTime = 3.5f;
+    GameObject iceBall;
 
     public Transform wallDetectionPoint;
     public Transform grabObjectDetectionPoint;
@@ -54,6 +55,7 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("GrabbableObject");
         nonObstacles.Add("Player");
         nonObstacles.Add("Button");
+        nonObstacles.Add("IceBall");
         jumpTimeCounter = jumpTime;
     }
 
@@ -131,9 +133,16 @@ public class PhysicsComponent : MonoBehaviour
         {
             StopTime();
         }
-        if (inputs["Z"])
+        if (inputs["Z"] && !worldComponent.isTimeFrozen)
         {
-            IceBall();
+            if (inputs["W"])
+            {
+                IceBall(true);
+            }
+            else
+            {
+                IceBall();
+            }
         }
         if (inputs["C"])
         {
@@ -239,16 +248,50 @@ public class PhysicsComponent : MonoBehaviour
         {
             rb.velocity = new Vector2(-3,6);
         }
-        
     }
 
-    void IceBall()
+    void IceBall(bool upwards = false)
     {
-        iceballcheck = GameObject.FindGameObjectWithTag("IceBall");
-        if (iceballcheck == null)
+        if (iceBall == null)
         {
-            newIceBall = Instantiate(iceBallPrefab, iceBallSpawner.position, iceBallSpawner.rotation);
+            GameObject newIceBall = iceBallPrefab;
+            IceBallMovement iceBallMovement = newIceBall.GetComponent<IceBallMovement>();
+            if (upwards && !isGrabbingObject)
+            {
+                iceBallMovement.direction = 0;
+                iceBall = Instantiate(newIceBall, iceBallSpawnerUp.position, iceBallSpawnerUp.rotation);
+            }
+            else
+            {
+                if (facingRight)
+                {
+                    iceBallMovement.direction = 1;
+                }
+                else
+                {
+                    iceBallMovement.direction = 2;
+                }
+                iceBall = Instantiate(newIceBall, iceBallSpawnerRight.position, iceBallSpawnerRight.rotation);
+            }
         }  
+    }
+
+    IEnumerator DestroyIceBallWithTime()
+    {
+        float iceBallId = iceBall.GetInstanceID();
+        yield return new WaitForSeconds(iceBallLifeTime);
+        if (iceBall)
+        {
+            if (iceBallId == iceBall.GetInstanceID())
+            {
+                if (worldComponent.lastTimeFreeze + iceBallLifeTime > Time.time)
+                {
+                    yield return new WaitForSeconds(worldComponent.timeFreezeLimit);
+                }
+                iceBall.GetComponent<IceBallFreezeComponent>().Unsubscribe();
+                Destroy(iceBall);
+            }
+        }
     }
 
     public bool CanExit() {

@@ -20,10 +20,7 @@ public class IceBallFreezeComponent : MonoBehaviour
 
     void FreezeObject()
     {
-        if (!rb.isKinematic)
-        {
-            savedVelocity = rb.velocity;
-        }
+        savedVelocity = rb.velocity;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
@@ -42,10 +39,7 @@ public class IceBallFreezeComponent : MonoBehaviour
         {
             rb.constraints = rb.constraints | RigidbodyConstraints2D.FreezeRotation;
         }
-        if (!rb.isKinematic)
-        {
-            rb.velocity = savedVelocity;
-        }
+        rb.velocity = savedVelocity;
     }
 
     public void Unsubscribe()

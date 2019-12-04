@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1590739762912333773}
   - component: {fileID: 1643000001401675355}
   - component: {fileID: 2518796942988267145}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IceBall
   m_TagString: IceBall
   m_Icon: {fileID: 0}
@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9907b012d99cc8941bf972df20f50a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceBallLife: 1
-  newiceBall: {fileID: 2395588984315101358}
   iceBallSpeed: 20
+  direction: 1
 --- !u!50 &1590739762912333773
 Rigidbody2D:
   serializedVersion: 4
@@ -118,8 +117,8 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &1643000001401675355
 CircleCollider2D:
