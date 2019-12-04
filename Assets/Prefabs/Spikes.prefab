@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9116161776216950079}
   - component: {fileID: 9116161776216950078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hazard
   m_TagString: Hazard
   m_Icon: {fileID: 0}

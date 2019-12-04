@@ -17,6 +17,8 @@ public class CollisionComponent : MonoBehaviour
         physicsComponent = GetComponent<PhysicsComponent>();
         stateComponent = GetComponent<StateComponent>();
         rb = GetComponent<Rigidbody2D>();
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(8, 11, false);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -27,6 +29,7 @@ public class CollisionComponent : MonoBehaviour
             {
                 hasBeenDamagedRecently = true;
                 Physics2D.IgnoreLayerCollision(8, 9, true);
+                Physics2D.IgnoreLayerCollision(8, 11, true);
                 stateComponent.RecieveDamage(1);
                 if (collision.gameObject.transform.position.x <= transform.position.x)
                 {
@@ -115,6 +118,7 @@ public class CollisionComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(8, 11, false);
         hasBeenDamagedRecently = false;
     }
 
