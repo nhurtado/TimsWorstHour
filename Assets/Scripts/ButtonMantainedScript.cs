@@ -15,7 +15,7 @@ public class ButtonMantainedScript : MonoBehaviour
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            target.gameObject.SetActive(maintainIsDeactivate);
+            target.gameObject.SetActive(!maintainIsDeactivate);
         }
     }
 
@@ -24,7 +24,7 @@ public class ButtonMantainedScript : MonoBehaviour
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            target.gameObject.SetActive(!maintainIsDeactivate);
+            target.gameObject.SetActive(maintainIsDeactivate);
         }
     }
 }
