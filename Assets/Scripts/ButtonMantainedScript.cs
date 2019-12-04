@@ -7,6 +7,7 @@ public class ButtonMantainedScript : MonoBehaviour
     GameObject colGameObject;
     public Transform target;
     float recentlyActivated;
+    public bool maintainIsDeactivate = true;
 
 
     void OnTriggerStay2D(Collider2D collision)
@@ -14,7 +15,7 @@ public class ButtonMantainedScript : MonoBehaviour
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            target.gameObject.SetActive(false);
+            target.gameObject.SetActive(maintainIsDeactivate);
         }
     }
 
@@ -23,7 +24,7 @@ public class ButtonMantainedScript : MonoBehaviour
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            target.gameObject.SetActive(true);
+            target.gameObject.SetActive(!maintainIsDeactivate);
         }
     }
 }
