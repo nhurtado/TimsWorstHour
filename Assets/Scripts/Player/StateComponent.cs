@@ -28,7 +28,7 @@ public class StateComponent : MonoBehaviour
     public void AddOrb()
     {
         orbs += 1;
-        if (orbs >= 9)
+        if (orbs > 9)
         {
             orbs = 0;
             AddShield();
