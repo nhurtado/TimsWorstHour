@@ -4,24 +4,11 @@ using UnityEngine;
 
 public class BossCameraComponent : MonoBehaviour
 {
-    public GameObject mainCamera;
-    public GameObject bossCamera;
-    public bool togglesBossCamera = true;
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public GameObject BlueFilter;
+    
+    void Start()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (togglesBossCamera && mainCamera.activeSelf)
-            {
-                mainCamera.SetActive(false);
-                bossCamera.SetActive(true);
-            }
-            else if (!togglesBossCamera && bossCamera.activeSelf)
-            {
-                bossCamera.SetActive(false);
-                mainCamera.SetActive(true);
-            }
-        }
+        BlueFilter.transform.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        BlueFilter.SetActive(true);
     }
 }

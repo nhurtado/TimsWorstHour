@@ -11,6 +11,14 @@ public class DefenseRangeComponent : MonoBehaviour
         wizardMasterScript = transform.parent.GetComponent<WizardMasterScript>();
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "IceBall")
+        {
+            wizardMasterScript.playerEnteredDefenseRange = true;
+        }
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "IceBall")

@@ -8,18 +8,28 @@ public class WizardMasterScript : MonoBehaviour
     public Vector2 currentTeleportPoint;
     public Vector2 nextTeleportPoint;
     public GameObject player;
-    public Vector2 playerPosition;
     public bool facingRight = true;
     public Transform fireBallSpawn;
     public GameObject fireBallPrefab;
     public float lastFireBallTime;
+
+
+    public Vector2 playerPosition;
     public bool playerEnteredDefenseRange;
+    public StateComponent playerStateComponent;
+
+    public bool fighting = true;
+    public GameObject SpeechBubble;
+    public GameObject exitTrapdoor;
+    
     public Dictionary<string, bool> worldState = new Dictionary<string, bool>();
     Node decisionTree;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        exitTrapdoor =  GameObject.Find("ExitTrapdoor");
+        playerStateComponent = player.GetComponent<StateComponent>();
         teleportPoints = new List<Transform>();
         GameObject[] teleportSpawns = GameObject.FindGameObjectsWithTag("BossTeleport");
         foreach (GameObject teleportSpawn in teleportSpawns)
@@ -55,10 +65,14 @@ public class WizardMasterScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        CheckPlayerPosition();
-        CheckAndUpdateFacingPosition();
-        UpdateWorldState();
-        decisionTree.Decide(worldState);
+        if (fighting)
+        {
+            CheckPlayerPosition();
+            CheckAndUpdateFacingPosition();
+            UpdateWorldState();
+            decisionTree.Decide(worldState);
+            CheckPlayerLoseCondition();
+        }
     }
 
     void UpdateWorldState()
@@ -122,5 +136,18 @@ public class WizardMasterScript : MonoBehaviour
     void Idle()
     {
 
+    }
+
+    void CheckPlayerLoseCondition()
+    {
+        if (playerStateComponent.shields < 1)
+        {
+            playerStateComponent.cantDie = true;
+            fighting = false;
+            gameObject.tag = "Player";
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            SpeechBubble.SetActive(true);
+            exitTrapdoor.SetActive(false);
+        }
     }
 }

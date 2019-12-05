@@ -18,6 +18,8 @@ public class StateComponent : MonoBehaviour
 
     public Vector2 iniPosition;
 
+    public bool cantDie = false;
+
     void Start()
     {
         shieldCounter = GameObject.Find("ShieldCounter");
@@ -64,9 +66,17 @@ public class StateComponent : MonoBehaviour
         }
     }
     public void Die() {
-        FreezeWorldComponent.instance.ResetWorld();
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+
+        if (cantDie)
+        {
+            shieldCounter.GetComponent<Text>().text = "X " + 0;
+        }
+        else
+        {
+            FreezeWorldComponent.instance.ResetWorld();
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 
     public int GetKeys() {
