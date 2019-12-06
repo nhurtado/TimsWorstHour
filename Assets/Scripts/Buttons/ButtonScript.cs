@@ -6,12 +6,13 @@ public class ButtonScript : MonoBehaviour
 {
     GameObject colGameObject;
     public Transform target;
+    public bool pressToActivate;
     void OnTriggerEnter2D(Collider2D collision)
     {
         colGameObject = collision.gameObject;
         if (colGameObject.tag == "Player" || colGameObject.tag == "IceBall" || colGameObject.tag == "GrabbableObject")
         {
-            target.gameObject.SetActive(false);
+            target.gameObject.SetActive(pressToActivate);
         }
     }
 }
