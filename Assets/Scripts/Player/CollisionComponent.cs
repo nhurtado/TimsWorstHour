@@ -25,22 +25,7 @@ public class CollisionComponent : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Hazard")
         {
-            if (!hasBeenDamagedRecently)
-            {
-                hasBeenDamagedRecently = true;
-                Physics2D.IgnoreLayerCollision(8, 9, true);
-                Physics2D.IgnoreLayerCollision(8, 11, true);
-                stateComponent.RecieveDamage(1);
-                if (collision.gameObject.transform.position.x <= transform.position.x)
-                {
-                    physicsComponent.JumpByDamage(true);
-                }
-                else
-                {
-                    physicsComponent.JumpByDamage(false);
-                }
-                StartCoroutine("ResetHasBeingDamaged");
-            }
+            TryToDamagePlayer(collision.gameObject);
         }
     }
 
@@ -69,11 +54,12 @@ public class CollisionComponent : MonoBehaviour
                 Destroy(collision.gameObject);
                 stateComponent.AddKey();
             }
-            if (collision.gameObject.tag == "DialogueTrigger")
-            {
-                collision.GetComponent<DialogueTrigger>().TriggerDialogue();
-            }
             StartCoroutine("ResetHasTriggered");
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            TryToDamagePlayer(collision.gameObject);
         }
     }
 
@@ -99,6 +85,26 @@ public class CollisionComponent : MonoBehaviour
             }
             rb.velocity = new Vector2(0f, 0f);
             rb.position = stateComponent.iniPosition;
+        }
+    }
+
+    void TryToDamagePlayer(GameObject collidedObject)
+    {
+        if (!hasBeenDamagedRecently)
+        {
+            hasBeenDamagedRecently = true;
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+            Physics2D.IgnoreLayerCollision(8, 11, true);
+            stateComponent.RecieveDamage(1);
+            if (collidedObject.transform.position.x <= transform.position.x)
+            {
+                physicsComponent.JumpByDamage(true);
+            }
+            else
+            {
+                physicsComponent.JumpByDamage(false);
+            }
+            StartCoroutine("ResetHasBeingDamaged");
         }
     }
 

@@ -56,6 +56,9 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("Player");
         nonObstacles.Add("Button");
         nonObstacles.Add("IceBall");
+        nonObstacles.Add("FireBall");
+        nonObstacles.Add("Trigger");
+        nonObstacles.Add("DefenseRange");
         jumpTimeCounter = jumpTime;
     }
 
@@ -273,6 +276,7 @@ public class PhysicsComponent : MonoBehaviour
                 }
                 iceBall = Instantiate(newIceBall, iceBallSpawnerRight.position, iceBallSpawnerRight.rotation);
             }
+            StartCoroutine("DestroyIceBallWithTime");
         }  
     }
 

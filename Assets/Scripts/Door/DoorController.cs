@@ -8,6 +8,7 @@ public class DoorController : MonoBehaviour
     [Header("General Settings:")]
     public bool locked;
     public int channel;
+    public bool cantUse = false;
     [Range(1,2)]
     public int id = 1;
 
@@ -30,17 +31,23 @@ public class DoorController : MonoBehaviour
     }
 
     public void OpenDoor() {
-        if (locked) {
-            if (stateComponent.GetKeys() > 0) {
-                stateComponent.RemoveKey();
-                locked = !locked;
+        if (!cantUse)
+        {
+            if (locked)
+            {
+                if (stateComponent.GetKeys() > 0)
+                {
+                    stateComponent.RemoveKey();
+                    locked = !locked;
+                    player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
+                    stateComponent.iniPosition = player.transform.position;
+                }
+            }
+            else
+            {
                 player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
                 stateComponent.iniPosition = player.transform.position;
             }
-        }
-        else {
-            player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
-            stateComponent.iniPosition = player.transform.position;
         }
     }
 }

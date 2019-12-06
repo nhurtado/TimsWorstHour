@@ -14,10 +14,12 @@ TagManager:
   - Downer
   - Hazard
   - IceBall
-  - DialogueTrigger
   - Platform
   - GroundCheck
   - Button
+  - Trigger
+  - BossTeleport
+  - DefenseRange
   layers:
   - Default
   - TransparentFX
@@ -31,8 +33,8 @@ TagManager:
   - Enemy
   - IceBall
   - Hazard
-  - 
-  - 
+  - FireBall
+  - Platforms
   - 
   - 
   - 
