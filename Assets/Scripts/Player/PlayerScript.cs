@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    bool facingRight = true;
-    float moving;
+    public bool facingRight = true;
+    public float moving;
+    public bool canMove = true;
     Dictionary<string, bool> inputs;
 
     InputComponent inputComponent;
@@ -29,18 +30,18 @@ public class PlayerScript : MonoBehaviour
         graphicsComponent = GetComponent<GraphicsComponent>();
         physicsComponent = GetComponent<PhysicsComponent>();
     }
-    
-    void Update()
-    {
-        facingRight = graphicsComponent.UpdateSprite(facingRight, moving);
-    }
 
     void FixedUpdate()
     {
+
         Tuple<float, Dictionary<string, bool>> inputResult = inputComponent.GetInput(inputs);
         moving = inputResult.Item1;
         inputs = inputResult.Item2;
-        physicsComponent.ProcessPlayerInputs(moving, inputs, facingRight);
+        if (canMove)
+        {
+            physicsComponent.ProcessPlayerInputs(moving, inputs, facingRight);
+            facingRight = graphicsComponent.UpdateSprite(facingRight, moving);
+        }
     }
 }
 
