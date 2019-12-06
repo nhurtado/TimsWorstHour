@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour
         player = GameObject.Find("Player");
         BlueFilter.transform.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         BlueFilter.SetActive(true);
+        transform.position =  player.transform.position + new Vector3(0, 2.5f, -10);
     }
 
     // Update is called once per frame
