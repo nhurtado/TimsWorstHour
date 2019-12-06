@@ -10,7 +10,7 @@ public class TitleScreenController : MonoBehaviour
     {
         if (Event.current.Equals(Event.KeyboardEvent("return")))
         {
-            SceneManager.LoadScene("Scene1");
+            SceneManager.LoadScene("Tower of Mages");
         }
     }
 }

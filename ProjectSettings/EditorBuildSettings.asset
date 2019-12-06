@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lvl1/Scene1.unity
+    path: Assets/Scenes/Tower of Mages/Tower of Mages.unity
     guid: 06b7a7e6e523ce04b9190ab9cfd98dfe
   m_configObjects: {}
