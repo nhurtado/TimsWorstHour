@@ -60,6 +60,7 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("Trigger");
         nonObstacles.Add("DefenseRange");
         nonObstacles.Add("Barrier");
+        nonObstacles.Add("FireBallUpgrade");
         jumpTimeCounter = jumpTime;
     }
 

@@ -24,6 +24,8 @@ TagManager:
   - DemonDinosaur
   - Barrier
   - BossTeleport
+  - FireBallUpgrade
+  - FireBall
   layers:
   - Default
   - TransparentFX

@@ -377,12 +377,12 @@ PrefabInstance:
     - target: {fileID: 2356175291325153005, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: -1.12
       objectReference: {fileID: 0}
     - target: {fileID: 2356175291325153005, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.4
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 2356175291325153005, guid: 1058c8c8c1f9ea64697de3a467d72a1c,
         type: 3}
@@ -2045,7 +2045,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 90420b896f120924ca64594f793f63ae, type: 3}
+      objectReference: {fileID: 8300000, guid: 90ebfd3a8c17c024bb8205fc42134332, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa90cecb3d6a2e4f91f4f9f8efe98e4, type: 3}
 --- !u!82 &122526033 stripped

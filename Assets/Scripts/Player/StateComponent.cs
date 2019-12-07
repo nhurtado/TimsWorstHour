@@ -26,6 +26,7 @@ public class StateComponent : MonoBehaviour
         shieldCounter = GameObject.Find("ShieldCounter");
         orbCounter = GameObject.Find("OrbCounter");
         keyCounter = GameObject.Find("KeyCounter");
+        AddShield();
     }
 
     public void AddOrb()

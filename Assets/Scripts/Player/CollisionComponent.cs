@@ -10,6 +10,7 @@ public class CollisionComponent : MonoBehaviour
     Rigidbody2D rb;
     bool hasBeenDamagedRecently = false;
     bool hasTriggeredRecently = false;
+    public GameObject fireBallPrefab;
 
 
     void Start()
@@ -59,12 +60,19 @@ public class CollisionComponent : MonoBehaviour
                 Destroy(collision.gameObject);
                 stateComponent.AddKey();
             }
+            
             StartCoroutine("ResetHasTriggered");
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             TryToDamagePlayer(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "FireBallUpgrade")
+        {
+            Destroy(collision.gameObject);
+            physicsComponent.iceBallPrefab = fireBallPrefab;
         }
     }
 
