@@ -32,7 +32,7 @@ public class DemonDinosaurScript : MonoBehaviour
 
     IEnumerator KillTheDinosaur()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(60);
         player.transform.gameObject.GetComponent<StateComponent>().cantDie = true;
         gameObject.GetComponent<Animator>().enabled = false;
         urnPiece.SetActive(true);
