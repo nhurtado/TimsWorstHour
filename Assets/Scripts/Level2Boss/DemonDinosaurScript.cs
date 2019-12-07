@@ -9,30 +9,64 @@ public class DemonDinosaurScript : MonoBehaviour
     public Animator anim;
     public GameObject player;
     public GameObject urnPiece;
+    public float triggeredTime;
+    public bool triggered;
+
+    public Dictionary<string, bool> worldState = new Dictionary<string, bool>();
+    Node decisionTree;
 
     void Start()
     {
         player = GameObject.Find("Player");
         FreezeWorldComponent.FreezeEvent += FreezeObject;
         FreezeWorldComponent.UnfreezeEvent += UnfreezeObject;
+
+        worldState.Add("OneMinuteHasPassed", false);
+
+        ActionNode runNode = new ActionNode();
+        runNode.actionMethod = DRun;
+
+        ActionNode dieNode = new ActionNode();
+        dieNode.actionMethod = Die;
+
+        BinaryNode minuteDecisionNode = new BinaryNode();
+        minuteDecisionNode.yesNode = dieNode;
+        minuteDecisionNode.noNode = runNode;
+        minuteDecisionNode.decision = "OneMinuteHasPassed";
+
+        decisionTree = minuteDecisionNode;
     }
 
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector2(Time.deltaTime * speed, 0));
+        Check60SecondsPassed();
+        decisionTree.Decide(worldState);
     }
 
     public void TriggerDinosaur()
     {
         anim.Play("DemonDinosaurRunning");
-        StartCoroutine("KillTheDinosaur");
         initialSpeed = 5;
+        triggered = true;
+        triggeredTime = Time.time;
     }
 
-    IEnumerator KillTheDinosaur()
+    void Check60SecondsPassed()
     {
-        yield return new WaitForSeconds(60);
+        if (triggeredTime + 5 < Time.time && triggered)
+        {
+            worldState["OneMinuteHasPassed"] = true;
+        }
+    }
+
+    void DRun()
+    {
+        transform.Translate(new Vector2(Time.deltaTime * speed, 0));
+    }
+
+    void Die()
+    {
         player.transform.gameObject.GetComponent<StateComponent>().cantDie = true;
         gameObject.GetComponent<Animator>().enabled = false;
         urnPiece.SetActive(true);
