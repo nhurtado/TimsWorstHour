@@ -4,25 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GrabbableObject
+  - GroundCheck
+  - Platform
+  - Enemy
+  - Hazard
+  - Button
+  - IceBall
+  - Downer
   - Orb
   - Key
-  - void
+  - GrabbableObject
   - Door
-  - Enemy
-  - Upper
-  - Downer
-  - Hazard
-  - IceBall
-  - Platform
-  - GroundCheck
-  - Button
-  - Trigger
-  - BossTeleport
+  - void
   - DefenseRange
+  - PlasmaBall
+  - Upper
+  - Trigger
   - DialogueTrigger
-  - Barrier
   - DemonDinosaur
+  - Barrier
+  - BossTeleport
   layers:
   - Default
   - TransparentFX
@@ -61,17 +62,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 3771193503
-    locked: 0
-  - name: Terrain
-    uniqueID: 975278901
+    uniqueID: 3300878051
     locked: 0
   - name: Objects
-    uniqueID: 2267557699
+    uniqueID: 1354844235
     locked: 0
   - name: Player
-    uniqueID: 3586743837
+    uniqueID: 51072981
     locked: 0
   - name: Foreground
-    uniqueID: 1060473985
+    uniqueID: 3669216961
     locked: 0

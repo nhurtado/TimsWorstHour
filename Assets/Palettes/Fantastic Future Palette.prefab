@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7172742940918836876}
   - component: {fileID: 4335097726229968907}
   m_Layer: 31
-  m_Name: New Palette
+  m_Name: Fantastic Future Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266623770486682301}
   m_Enabled: 1
-  m_CellSize: {x: 2.07, y: 2.06, z: 0}
+  m_CellSize: {x: 2.0694444, y: 1.8138889, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -94,6 +94,24 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: -2, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -1, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: -3, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -120,6 +138,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: ea8f4a8755f412840b5239174f985f78, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 880a2feb256113942b432da8d72f2807, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: b427875bbce81ca4a91df3e4cf635673, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1c13dd4c8ab58b94db5f4e705d64306d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9ed285262dcc29d4b80bf69424378e4f, type: 3}
@@ -127,8 +149,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: bcf0a5d659a32ff44a77fe0094d79ff2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 3409d0c90208e5743b41de8ea764b614, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 0af822b3f66fdac4f9ca4d95db92db6d, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 5b628ed6b579a6148b59fcc02878b0f8, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data:
       e00: 1
       e01: 0
@@ -147,7 +173,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
