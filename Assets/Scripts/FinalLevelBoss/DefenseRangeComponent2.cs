@@ -19,6 +19,7 @@ public class DefenseRangeComponent2 : MonoBehaviour
         }
         else if (collision.gameObject.tag == "FireBall")
         {
+            Destroy(collision.gameObject);
             wizardMasterScript.healthPoints -= 1;
             wizardMasterScript.playerEnteredDefenseRange = true;
         }
@@ -32,6 +33,7 @@ public class DefenseRangeComponent2 : MonoBehaviour
         }
         else if (collision.gameObject.tag == "FireBall")
         {
+            Destroy(collision.gameObject);
             wizardMasterScript.healthPoints -= 1;
             wizardMasterScript.playerEnteredDefenseRange = true;
         }

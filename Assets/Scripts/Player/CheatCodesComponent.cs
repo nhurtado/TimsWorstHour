@@ -26,6 +26,10 @@ public class CheatCodesComponent : MonoBehaviour
     private string[] cheatCode5 = new string[] { "e", "t", "g", "o", "e", "s", "h", "o", "m", "e" };
     private int cheatCode5Index = 0;
 
+    //Teleport to Boss Room
+    private string[] cheatCode6 = new string[] { "l", "i", "k", "e", "a", "b", "o", "s", "s" };
+    private int cheatCode6Index = 0;
+
     void Start()
     {
 
@@ -38,6 +42,7 @@ public class CheatCodesComponent : MonoBehaviour
         cheatCode3Index = TryCheatCode(cheatCode3Index, cheatCode3, FreezeCheat);
         cheatCode4Index = TryCheatCode(cheatCode4Index, cheatCode4, CooldownCheat);
         cheatCode5Index = TryCheatCode(cheatCode5Index, cheatCode5, FlyCheat);
+        cheatCode6Index = TryCheatCode(cheatCode6Index, cheatCode6, BossRoomCheat);
     }
 
     int TryCheatCode(int cheatCodeIndex, string[] cheatCode, Func<bool> cheatMethod)
@@ -109,6 +114,14 @@ public class CheatCodesComponent : MonoBehaviour
     bool FlyCheat()
     {
         transform.gameObject.GetComponent<StateComponent>().canFly= true;
+        return true;
+    }
+
+    bool BossRoomCheat()
+    {
+        Vector3 BossRoomTeleport = GameObject.Find("BossRoomTeleport").transform.position;
+        transform.position = new Vector3(BossRoomTeleport.x, BossRoomTeleport.y, 0);
+            
         return true;
     }
 }

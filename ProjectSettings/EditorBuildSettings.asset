@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fantastic Future/Fantastic Future.unity
     guid: 6d4a03d11ca576e40b005048910d3128
+  - enabled: 1
+    path: Assets/Scenes/Tower of Ages/Tower of Ages.unity
+    guid: 4f2aa900afe71af459d77c2c05bc259c
   m_configObjects: {}

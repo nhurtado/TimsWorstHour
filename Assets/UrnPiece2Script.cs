@@ -23,6 +23,6 @@ public class UrnPiece2Script : MonoBehaviour
         yield return new WaitForSeconds(3);
         FreezeWorldComponent.instance.ResetWorld();
         EraChangeWorldComponent.instance.ResetWorld();
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("Tower of Ages");
     }
 }
