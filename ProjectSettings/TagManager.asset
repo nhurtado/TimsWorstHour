@@ -20,6 +20,8 @@ TagManager:
   - Trigger
   - BossTeleport
   - DefenseRange
+  - DialogueTrigger
+  - PlasmaBall
   layers:
   - Default
   - TransparentFX
