@@ -21,7 +21,12 @@ TagManager:
   - BossTeleport
   - DefenseRange
   - DialogueTrigger
+<<<<<<< HEAD
   - PlasmaBall
+=======
+  - Barrier
+  - DemonDinosaur
+>>>>>>> 7d91bfc718b5bfc617a7065db22dcd8eeee08842
   layers:
   - Default
   - TransparentFX
@@ -37,9 +42,9 @@ TagManager:
   - Hazard
   - FireBall
   - Platforms
-  - 
-  - 
-  - 
+  - Barrier
+  - BossEnemy
+  - Urn
   - 
   - 
   - 

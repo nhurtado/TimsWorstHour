@@ -27,6 +27,11 @@ public class CollisionComponent : MonoBehaviour
         {
             TryToDamagePlayer(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "DemonDinosaur")
+        {
+            TryToDamagePlayer(collision.gameObject, true);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -88,7 +93,7 @@ public class CollisionComponent : MonoBehaviour
         }
     }
 
-    void TryToDamagePlayer(GameObject collidedObject)
+    void TryToDamagePlayer(GameObject collidedObject, bool strong = false)
     {
         if (!hasBeenDamagedRecently)
         {
@@ -98,11 +103,27 @@ public class CollisionComponent : MonoBehaviour
             stateComponent.RecieveDamage(1);
             if (collidedObject.transform.position.x <= transform.position.x)
             {
-                physicsComponent.JumpByDamage(true);
+                if (!strong)
+                {
+                    physicsComponent.JumpByDamage(true);
+                }
+                else
+                {
+                    gameObject.GetComponent<PlayerScript>().canMove = false;
+                    physicsComponent.JumpByDamage(true, true);
+                }
             }
             else
             {
-                physicsComponent.JumpByDamage(false);
+                if (!strong)
+                {
+                    physicsComponent.JumpByDamage(false);
+                }
+                else
+                {
+                    gameObject.GetComponent<PlayerScript>().canMove = false;
+                    physicsComponent.JumpByDamage(true);
+                }
             }
             StartCoroutine("ResetHasBeingDamaged");
         }
@@ -122,9 +143,13 @@ public class CollisionComponent : MonoBehaviour
 
     IEnumerator ResetHasBeingDamaged()
     {
-        yield return new WaitForSeconds(2.5f);
+
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<PlayerScript>().canMove = true;
+        yield return new WaitForSeconds(1f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
         Physics2D.IgnoreLayerCollision(8, 11, false);
+        
         hasBeenDamagedRecently = false;
     }
 
