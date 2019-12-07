@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class StateComponent : MonoBehaviour
 {
     public bool isGrounded = false;
+    public bool canFly = false;
     public int shields = 0;
 
     int orbs;
@@ -74,6 +75,7 @@ public class StateComponent : MonoBehaviour
         else
         {
             FreezeWorldComponent.instance.ResetWorld();
+            EraChangeWorldComponent.instance.ResetWorld();
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }

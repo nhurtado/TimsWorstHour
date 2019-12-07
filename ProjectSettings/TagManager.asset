@@ -20,6 +20,9 @@ TagManager:
   - Trigger
   - BossTeleport
   - DefenseRange
+  - DialogueTrigger
+  - Barrier
+  - DemonDinosaur
   layers:
   - Default
   - TransparentFX
@@ -35,9 +38,9 @@ TagManager:
   - Hazard
   - FireBall
   - Platforms
-  - 
-  - 
-  - 
+  - Barrier
+  - BossEnemy
+  - Urn
   - 
   - 
   - 

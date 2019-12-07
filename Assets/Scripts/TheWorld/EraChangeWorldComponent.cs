@@ -25,4 +25,9 @@ public class EraChangeWorldComponent : MonoBehaviour
             lastEraChange = currentTime;
         }
     }
+
+    public void ResetWorld()
+    {
+        EraChangeEvent = null;
+    }
 }

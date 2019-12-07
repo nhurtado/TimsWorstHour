@@ -15,8 +15,8 @@ public class PlatformMovementComponent : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        FreezeWorldComponent.FreezeEvent += FreezPlatform;
-        FreezeWorldComponent.UnfreezeEvent += UnfreezPlatform;
+        FreezeWorldComponent.FreezeEvent += FreezePlatform;
+        FreezeWorldComponent.UnfreezeEvent += UnfreezePlatform;
         speed = initialSpeed;
     }
 
@@ -71,12 +71,12 @@ public class PlatformMovementComponent : MonoBehaviour
         }
     }
 
-    void FreezPlatform()
+    void FreezePlatform()
     {
         speed = 0;
     }
 
-    void UnfreezPlatform()
+    void UnfreezePlatform()
     {
         speed = initialSpeed;
     }

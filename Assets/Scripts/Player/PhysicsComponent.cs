@@ -59,6 +59,7 @@ public class PhysicsComponent : MonoBehaviour
         nonObstacles.Add("FireBall");
         nonObstacles.Add("Trigger");
         nonObstacles.Add("DefenseRange");
+        nonObstacles.Add("Barrier");
         jumpTimeCounter = jumpTime;
     }
 
@@ -97,7 +98,11 @@ public class PhysicsComponent : MonoBehaviour
         }
         if (inputs["Jump"])
         {
-            if (stateComponent.isGrounded)
+            if (stateComponent.canFly)
+            {
+                PlayerJump();
+            }
+            else if (stateComponent.isGrounded)
             {
                 isJumping = true;
                 jumpTimeCounter = jumpTime;
@@ -241,15 +246,30 @@ public class PhysicsComponent : MonoBehaviour
         EraChangeWorldComponent.instance.TriggerEraChange();
     }
 
-    public void JumpByDamage(bool jumpRight)
+    public void JumpByDamage(bool jumpRight, bool strong = false)
     {
         if (jumpRight)
         {
-            rb.velocity = new Vector2(3,6);
+            if (strong)
+            {
+                rb.velocity = new Vector2(25, 10);
+            }
+            else
+            {
+                rb.velocity = new Vector2(3, 6);
+            }
+            
         }
         else
         {
-            rb.velocity = new Vector2(-3,6);
+            if (strong)
+            {
+                rb.velocity = new Vector2(-25, 10);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-3, 6);
+            }
         }
     }
 

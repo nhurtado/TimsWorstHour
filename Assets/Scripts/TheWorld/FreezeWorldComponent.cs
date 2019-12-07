@@ -19,6 +19,11 @@ public class FreezeWorldComponent : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("Time Freeze Limit"))
+        {
+            timeFreezeLimit = PlayerPrefs.GetFloat("Time Freeze Limit");
+            timeFreezeCooldown = PlayerPrefs.GetFloat("Time Freeze Cooldown");
+        }
         instance = this;
     }
 
@@ -50,7 +55,10 @@ public class FreezeWorldComponent : MonoBehaviour
 
     public void UpgradeCooldown()
     {
-        timeFreezeCooldown -= timeFreezeCooldownUpgrade;
+        if (timeFreezeCooldown - timeFreezeCooldownUpgrade > 0)
+        {
+            timeFreezeCooldown -= timeFreezeCooldownUpgrade;
+        }
     }
 
     public void ResetWorld()
