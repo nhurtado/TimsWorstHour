@@ -313,8 +313,11 @@ public class PhysicsComponent : MonoBehaviour
                 {
                     yield return new WaitForSeconds(worldComponent.timeFreezeLimit);
                 }
-                iceBall.GetComponent<IceBallFreezeComponent>().Unsubscribe();
-                Destroy(iceBall);
+                if (iceBall)
+                {
+                    iceBall.GetComponent<IceBallFreezeComponent>().Unsubscribe();
+                    Destroy(iceBall);
+                }
             }
         }
     }

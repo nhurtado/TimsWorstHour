@@ -19,20 +19,7 @@ public class DefenseRangeComponent2 : MonoBehaviour
         }
         else if (collision.gameObject.tag == "FireBall")
         {
-            Destroy(collision.gameObject);
-            wizardMasterScript.healthPoints -= 1;
-            wizardMasterScript.playerEnteredDefenseRange = true;
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            wizardMasterScript.playerEnteredDefenseRange = true;
-        }
-        else if (collision.gameObject.tag == "FireBall")
-        {
+            collision.gameObject.GetComponent<IceBallFreezeComponent>().Unsubscribe();
             Destroy(collision.gameObject);
             wizardMasterScript.healthPoints -= 1;
             wizardMasterScript.playerEnteredDefenseRange = true;

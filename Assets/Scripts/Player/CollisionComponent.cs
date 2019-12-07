@@ -72,6 +72,7 @@ public class CollisionComponent : MonoBehaviour
         if (collision.gameObject.tag == "FireBallUpgrade")
         {
             Destroy(collision.gameObject);
+            physicsComponent.iceBallPrefab.GetComponent<IceBallFreezeComponent>().Unsubscribe();
             physicsComponent.iceBallPrefab = fireBallPrefab;
         }
     }
