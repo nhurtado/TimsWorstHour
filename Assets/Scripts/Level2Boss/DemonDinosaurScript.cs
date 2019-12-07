@@ -54,7 +54,7 @@ public class DemonDinosaurScript : MonoBehaviour
 
     void Check60SecondsPassed()
     {
-        if (triggeredTime + 5 < Time.time && triggered)
+        if (triggeredTime + 60 < Time.time && triggered)
         {
             worldState["OneMinuteHasPassed"] = true;
         }
