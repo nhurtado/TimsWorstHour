@@ -12,8 +12,7 @@ public class DinosaurBossCameraFollow : MonoBehaviour
         BlueFilter.transform.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         BlueFilter.SetActive(true);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (dinosaur)

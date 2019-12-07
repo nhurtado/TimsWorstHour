@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DemonDinosaurScript : MonoBehaviour
 {
-    public float speed = 5;
-    public float initialSpeed = 5;
+    public float speed = 0;
+    public float initialSpeed = 0;
     public Animator anim;
     public GameObject player;
     public GameObject urnPiece;
@@ -15,8 +15,6 @@ public class DemonDinosaurScript : MonoBehaviour
         player = GameObject.Find("Player");
         FreezeWorldComponent.FreezeEvent += FreezeObject;
         FreezeWorldComponent.UnfreezeEvent += UnfreezeObject;
-        anim.Play("DemonDinosaurRunning");
-        StartCoroutine("KillTheDinosaur");
     }
 
 
@@ -25,9 +23,16 @@ public class DemonDinosaurScript : MonoBehaviour
         transform.Translate(new Vector2(Time.deltaTime * speed, 0));
     }
 
+    public void TriggerDinosaur()
+    {
+        anim.Play("DemonDinosaurRunning");
+        StartCoroutine("KillTheDinosaur");
+        initialSpeed = 5;
+    }
+
     IEnumerator KillTheDinosaur()
     {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(5);
         player.transform.gameObject.GetComponent<StateComponent>().cantDie = true;
         gameObject.GetComponent<Animator>().enabled = false;
         urnPiece.SetActive(true);

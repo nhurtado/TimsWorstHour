@@ -11,6 +11,7 @@ public class DemonDinosaurTriggerComponent : MonoBehaviour
         if (collision.tag == "Player")
         {
             DemonDinosaur.GetComponent<DemonDinosaurScript>().speed = 5;
+            DemonDinosaur.GetComponent<DemonDinosaurScript>().TriggerDinosaur();
         }
     }
 }
