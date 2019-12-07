@@ -111,6 +111,7 @@ public class CollisionComponent : MonoBehaviour
                 {
                     gameObject.GetComponent<PlayerScript>().canMove = false;
                     physicsComponent.JumpByDamage(true, true);
+                    StartCoroutine("CanMoveTimed");
                 }
             }
             else
@@ -123,6 +124,7 @@ public class CollisionComponent : MonoBehaviour
                 {
                     gameObject.GetComponent<PlayerScript>().canMove = false;
                     physicsComponent.JumpByDamage(true);
+                    StartCoroutine("CanMoveTimed");
                 }
             }
             StartCoroutine("ResetHasBeingDamaged");
@@ -143,14 +145,18 @@ public class CollisionComponent : MonoBehaviour
 
     IEnumerator ResetHasBeingDamaged()
     {
+        gameObject.GetComponent<PlayerScript>().canMove = true;
+        yield return new WaitForSeconds(1.5f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(8, 11, false);
+        hasBeenDamagedRecently = false;
+    }
+
+    IEnumerator CanMoveTimed()
+    {
 
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<PlayerScript>().canMove = true;
-        yield return new WaitForSeconds(1f);
-        Physics2D.IgnoreLayerCollision(8, 9, false);
-        Physics2D.IgnoreLayerCollision(8, 11, false);
-        
-        hasBeenDamagedRecently = false;
     }
 
 
