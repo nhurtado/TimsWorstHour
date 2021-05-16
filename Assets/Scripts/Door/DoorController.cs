@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class DoorController : MonoBehaviour
 {
     [Header("General Settings:")]
@@ -14,6 +15,7 @@ public class DoorController : MonoBehaviour
 
     GameObject player;
     GameObject otherDoor;
+    public GameObject SonidoPuerta;
     StateComponent stateComponent;
 
     void Start()
@@ -37,6 +39,7 @@ public class DoorController : MonoBehaviour
             {
                 if (stateComponent.GetKeys() > 0)
                 {
+                    Instantiate(SonidoPuerta);
                     stateComponent.RemoveKey();
                     locked = !locked;
                     player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
@@ -45,6 +48,7 @@ public class DoorController : MonoBehaviour
             }
             else
             {
+                Instantiate(SonidoPuerta);
                 player.transform.position = otherDoor.transform.position + new Vector3(0, 1);
                 stateComponent.iniPosition = player.transform.position;
             }

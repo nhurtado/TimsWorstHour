@@ -16,6 +16,7 @@ public class StateComponent : MonoBehaviour
     GameObject shieldCounter;
     GameObject orbCounter;
     GameObject keyCounter;
+    public GameObject SonidoDaño;
 
     public Vector2 iniPosition;
 
@@ -60,9 +61,11 @@ public class StateComponent : MonoBehaviour
 
     public void RecieveDamage(int damage) {
         if (shields < damage) {
+            Instantiate(SonidoDaño);
             Die();
         }
         else {
+            Instantiate(SonidoDaño);
             shields -= damage;
             shieldCounter.GetComponent<Text>().text = "X " + shields;
         }

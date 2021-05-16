@@ -44,10 +44,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -70,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2027409597
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 723fa369906311a4f9ee0fce477221a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,4 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 0
   channel: 0
+  cantUse: 0
   id: 0
+  SonidoPuerta: {fileID: 384163654820853845, guid: 3b9c351e6692bad4cbf41e3176b2fdd9,
+    type: 3}
